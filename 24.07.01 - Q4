@@ -1,0 +1,51 @@
+"""
+4. Crie uma classe abstrata Veiculo com métodos abstratos acelerar e frear.
+Crie duas subclasses Carro e Bicicleta que implementem esses métodos.
+Adicione um método abstrato obter_tipo_combustivel à classe Veiculo e faça com que Carro e Bicicleta implementem este método.
+Crie um programa que crie instâncias de Carro e Bicicleta e chame todos os métodos implementados.
+"""
+
+from abc import ABC, abstractmethod
+
+class Veiculo(ABC):
+    @abstractmethod
+    def acelerar(self):
+        pass
+    
+    @abstractmethod
+    def frear(self):
+        pass
+    
+    @abstractmethod
+    def obter_tipo_combustivel(self):
+        pass
+
+class Carro(Veiculo):
+    def acelerar(self):
+        print("Carro acelerando!")
+    
+    def frear(self):
+        print("Carro freando...")
+    
+    def obter_tipo_combustivel(self):
+        return "Gasolina."
+
+class Bicicleta(Veiculo):
+    def acelerar(self):
+        print("Bicicleta acelerando!")
+    
+    def frear(self):
+        print("Bicicleta freando...")
+    
+    def obter_tipo_combustivel(self):
+        return "Sem combustível."
+
+carro = Carro()
+bicicleta = Bicicleta()
+
+carro.acelerar()
+print(f"Tipo de combustível do carro: {carro.obter_tipo_combustivel()}")
+carro.frear()
+bicicleta.acelerar()
+print(f"Tipo de combustível da bicicleta: {bicicleta.obter_tipo_combustivel()}")
+bicicleta.frear()
