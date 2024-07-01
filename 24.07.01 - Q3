@@ -1,0 +1,29 @@
+"""
+3. Crie uma classe Animal com um método fazer_som.
+Crie duas subclasses Cachorro e Gato que herdem de Animal e implemente o método fazer_som com sons específicos para cada animal.
+Adicione uma classe Passaro que também herde de Animal e implemente o método fazer_som.
+Crie uma lista de diferentes objetos Animal e itere sobre ela, chamando o método fazer_som para cada objeto.
+"""
+
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    @abstractmethod
+    def fazer_som(self):
+        pass
+
+class Cachorro(Animal):
+    def fazer_som(self):
+        return "Au au!"
+
+class Gato(Animal):
+    def fazer_som(self):
+        return "Miau!"
+
+class Passaro(Animal):
+    def fazer_som(self):
+        return "Piu!"
+
+animais = [Cachorro(), Gato(), Passaro()]
+for animal in animais:
+    print(animal.fazer_som())
