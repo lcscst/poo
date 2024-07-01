@@ -1,0 +1,47 @@
+"""
+1. Crie uma classe abstrata Forma que tenha um método abstrato area.
+Crie duas subclasses Retangulo e Circulo que implementem o método area.
+Adicione um método abstrato perimetro à classe Forma e faça com que as subclasses Retangulo e Circulo também implementem este método.
+Escreva um programa que crie instâncias de Retangulo e Circulo, calcule e imprima suas áreas e perímetros.
+"""
+
+from abc import ABC, abstractmethod
+import math
+
+class Forma(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+    
+    @abstractmethod
+    def perimetro(self):
+        pass
+
+class Retangulo(Forma):
+    def __init__(self, altura, largura):
+        self.altura = altura
+        self.largura = largura
+    
+    def area(self):
+        return self.altura * self.largura
+    
+    def perimetro(self):
+        return 2 * (self.altura + self.largura)
+
+class Circulo(Forma):
+    def __init__(self, raio):
+        self.raio = raio
+    
+    def area(self):
+        return math.pi * self.raio ** 2
+    
+    def perimetro(self):
+        return 2 * math.pi * self.raio
+
+retangulo = Retangulo(2, 10)
+print(f"Área do retângulo: {retangulo.area()}")
+print(f"Perímetro do retângulo: {retangulo.perimetro()}")
+
+circulo = Circulo(5)
+print(f"Área do círculo: {circulo.area():.2f}")
+print(f"Perímetro do círculo: {circulo.perimetro():.2f}")
